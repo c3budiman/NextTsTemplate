@@ -4,7 +4,6 @@ const nextConfig = {
   reactStrictMode: true,
   env: {
     APPNAME: 'StarterPlateC3budiman',
-    APPKEY: 'sukasukawajaappkeynyaaapaanygpentingsusahdihack',
     ANALYZE: 'true',
   },
   images: {

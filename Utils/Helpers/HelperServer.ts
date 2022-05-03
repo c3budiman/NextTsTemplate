@@ -1,6 +1,8 @@
+/* eslint-disable max-len */
 import jwt from "jsonwebtoken";
 import cookie from "js-cookie";
 import type { NextApiRequest, NextApiResponse } from "next";
+import { decrypt, encrypt } from "./Crypto";
 
 export function isJson(item: string) {
   if (typeof item !== "undefined") {
@@ -24,7 +26,7 @@ export function isJson(item: string) {
 const buildCookiesWithJWT = (
   key: string,
   val: string,
-  rememberLogin: boolean,
+  rememberLogin: boolean
 ) => {
   const now = new Date();
   let time = now.getTime();
@@ -33,20 +35,29 @@ const buildCookiesWithJWT = (
   let token = "";
   if (!rememberLogin) {
     time += 3600 * 1000 * 24;
-    token = jwt.sign({ sess: val }, process.env.APPKEY ?? "secret", {
-      expiresIn: "1 days",
-    });
+    token = jwt.sign(
+      { sess: val },
+      process.env.NEXT_PUBLIC_APPKEY ?? "secret",
+      {
+        expiresIn: "1 days",
+      }
+    );
   } else {
     time += 3600 * 1000 * 24 * 7;
-    token = jwt.sign({ sess: val }, process.env.APPKEY ?? "secret", {
-      expiresIn: "7 days",
-    });
+    token = jwt.sign(
+      { sess: val },
+      process.env.NEXT_PUBLIC_APPKEY ?? "secret",
+      {
+        expiresIn: "7 days",
+      }
+    );
   }
 
   now.setTime(time);
 
   // encrypt jwt token :
-  //   token = encryptBro(process.env.APPKEY, token);
+  // console.log(process.env.NEXT_PUBLIC_APPKEY);
+  token = encrypt(token);
 
   const data = `${key}=${token};`;
   const expires = `expires=${now.toUTCString()};`;
@@ -65,14 +76,14 @@ const buildCookiesWithJWT = (
  * `setSession`
  *
  *  you may no need to build cookies yourself, if your backend already has it
- *
+ *  or if you need an extra layer for security you may use this :
  *
  */
 export function setSession(
   req: NextApiRequest,
   res: NextApiResponse,
   inputSession: string,
-  keySession = "nms",
+  keySession = process.env.APPNAME ?? "c3budimanstarter"
 ) {
   if (!isJson(inputSession)) {
     return { code: 101, info: "Please Use JSON for Input Format.", data: {} };
@@ -118,9 +129,7 @@ const getCookieFromServer = (key: string, req: NextApiRequest) => {
   return rawCookie.split("=")[1];
 };
 
-export const getCookie = (key: string, req: NextApiRequest) => (process.browser
-  ? getCookieFromBrowser(key)
-  : getCookieFromServer(key, req));
+export const getCookie = (key: string, req: NextApiRequest) => (process.browser ? getCookieFromBrowser(key) : getCookieFromServer(key, req));
 
 /**
  * `getSessionFromHeader` is basically a function to get cookie from header,
@@ -138,7 +147,7 @@ export async function getSessionFromHeader(req: NextApiRequest | any) {
 
     const tokenfromcookie = getCookie(
       process.env.APPNAME ?? "c3budimanstarter",
-      req,
+      req
     );
     if (token === "") {
       token = tokenfromcookie;
@@ -151,11 +160,13 @@ export async function getSessionFromHeader(req: NextApiRequest | any) {
         if (getTokenFromHeader) {
           bearer = token.substring(7);
         }
+        // console.log(bearer);
 
         try {
+          bearer = decrypt(bearer);
           const verifiedjwt = await jwt.verify(
             bearer,
-            process.env.APPKEY ?? "secret",
+            process.env.NEXT_PUBLIC_APPKEY ?? "secret"
           );
           return {
             code: 0,
