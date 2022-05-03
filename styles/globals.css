@@ -82,11 +82,11 @@ a {
 }
 
 .logoCrypto {
-  margin: 0px 20px;
+  margin: 0 20px;
 }
 
 .logoCryptoMobile {
-  margin: 0px 10px;
+  margin: 0 10px;
 }
 
 .hideScrollBar::-webkit-scrollbar {
