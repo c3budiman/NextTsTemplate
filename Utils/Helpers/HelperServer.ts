@@ -37,7 +37,7 @@ const buildCookiesWithJWT = (
     time += 3600 * 1000 * 24;
     token = jwt.sign(
       { sess: val },
-      process.env.NEXT_PUBLIC_APPKEY ?? "secret",
+      process.env.NEXT_PUBLIC_APPKEY ?? "",
       {
         expiresIn: "1 days",
       }
@@ -46,7 +46,7 @@ const buildCookiesWithJWT = (
     time += 3600 * 1000 * 24 * 7;
     token = jwt.sign(
       { sess: val },
-      process.env.NEXT_PUBLIC_APPKEY ?? "secret",
+      process.env.NEXT_PUBLIC_APPKEY ?? "",
       {
         expiresIn: "7 days",
       }
@@ -166,7 +166,7 @@ export async function getSessionFromHeader(req: NextApiRequest | any) {
           bearer = decrypt(bearer);
           const verifiedjwt = await jwt.verify(
             bearer,
-            process.env.NEXT_PUBLIC_APPKEY ?? "secret"
+            process.env.NEXT_PUBLIC_APPKEY ?? ""
           );
           return {
             code: 0,
