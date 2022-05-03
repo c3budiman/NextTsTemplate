@@ -1,0 +1,80 @@
+.ant-table-wrapper>div>div>div>div>div>table>thead>tr>th {
+    background-color: #fff;
+    color: #6b83a3;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.ant-table-row-expand-icon {
+    border: 1px solid #33539e !important;
+    color: #33539e !important;
+}
+
+.ant-table-footer {
+    background-color: #f7f8fc !important;
+}
+
+.footer-text {
+    color: #33539e;
+    font-size: 14px;
+}
+
+.table-v2-row {
+    font-size: 10px !important;
+}
+
+.ant-table-thead>tr>th,
+.ant-table-tbody>tr>td,
+.ant-table tfoot>tr>th,
+.ant-table tfoot>tr>td {
+    padding: 8px 4px !important;
+}
+
+.ant-table-measure-row {
+    display: none !important;
+}
+
+.ant-pagination {
+    font-size: 12px !important;
+}
+
+.ant-pagination-item {
+    min-width: 24px !important;
+    height: 24px !important;
+    line-height: 24px !important;
+    border: none !important;
+    color: #A5A5A5 !important;
+}
+
+.ant-pagination-prev,
+.ant-pagination-next,
+.ant-pagination-jump-prev,
+.ant-pagination-jump-next {
+    min-width: 24px !important;
+    height: 24px !important;
+    border: none !important;
+    line-height: 24px !important;
+}
+
+.ant-pagination-prev .ant-pagination-item-link, .ant-pagination-next .ant-pagination-item-link {
+    border: none !important;
+}
+
+.ant-pagination-item-active:focus-visible, .ant-pagination-item-active:hover {
+    background: #33539e !important;
+    color: #fff !important;
+}
+
+.ant-pagination-item-active a {
+    color: #fff !important;
+}
+
+.ant-pagination-item-active:focus-visible a, .ant-pagination-item-active:hover a {
+    color: #fff !important;
+}
+
+.ant-pagination-item-active {
+    background: #33539e !important;
+    color: #fff !important;
+}
