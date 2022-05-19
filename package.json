@@ -28,7 +28,7 @@
     "jsonwebtoken": "^8.5.1",
     "localforage": "^1.10.0",
     "mapbox-gl": "^2.7.1",
-    "next": "12.1.0",
+    "next": "12.1.5",
     "nextjs-progressbar": "^0.0.14",
     "react": "17.0.2",
     "react-apexcharts": "^1.4.0",
