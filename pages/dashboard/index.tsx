@@ -4,13 +4,16 @@ import { handleSessions } from "../../Utils/Helpers/GetSession";
 import DashboardLayout from "../../Layouts/DashboardLayout";
 import { changeSidebarKey } from "../../Redux/layout/action";
 import returnStoreAndPersistor from "../../Redux/store";
+import { Sessions } from "../../Types/Session";
 
-function Dashboard(session: any) {
+function Dashboard(session: Sessions) {
   const { store } = returnStoreAndPersistor();
 
   useEffect(() => {
     store.dispatch(changeSidebarKey(["dashboard"]));
   }, [store]);
+
+  console.log(session)
 
   return (
     <>

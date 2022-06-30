@@ -1,4 +1,3 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
 import { rejectNull, setSession } from "../../Utils/Helpers/HelperServer";
 
@@ -16,8 +15,8 @@ export default async function handler(
       const HardCodedData = {
         name: "c3budiman",
         role: "admin",
-        organization: "Holywings",
-        accessToken: "1234567890",
+        organization: "Google",
+        accessToken: Math.random(),
       };
       const sessionResult = await setSession(
         req,

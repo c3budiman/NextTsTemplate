@@ -4,8 +4,9 @@ import { handleSessions } from "../../Utils/Helpers/GetSession";
 import DashboardLayout from "../../Layouts/DashboardLayout";
 import returnStoreAndPersistor from "../../Redux/store";
 import { changeSidebarKey, InsertBreadcrumb } from "../../Redux/layout/action";
+import { Sessions } from "../../Types/Session";
 
-function Reports(session: any) {
+function Reports(session: Sessions) {
   const { store } = returnStoreAndPersistor();
 
   useEffect(() => {

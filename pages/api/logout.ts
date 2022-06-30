@@ -24,15 +24,14 @@ export default async function handler(
 
     try {
       res.setHeader("Set-Cookie", cookiesData);
+      return res
+        .status(200)
+        .json({ code: 0, info: "Log Out Success", data: [] });
     } catch (error) {
       return res
         .status(400)
         .json({ code: 0, info: "Something when wrong when set cookies, try clear cookies manually in your browser.", data: [] });
     }
-
-    return res
-      .status(200)
-      .json({ code: 0, info: "Log Out Success", data: [] });
   }
   // Handle any other HTTP method
   return res.status(401).json({

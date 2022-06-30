@@ -7,6 +7,7 @@ import BreadcrumbOur from "../Components/Global/Breadcrumb";
 import HeaderOur from "../Components/Global/Header";
 import Sidebar from "../Components/Global/Sidebar";
 import { AdminRoutes } from "../Configs/SidebarRoute";
+import { Sessions } from "../Types/Session";
 import useWindowSize from "../Utils/Helpers/ReactHelper";
 import { isNotDashboard } from "../Utils/Helpers/Routing";
 
@@ -14,7 +15,7 @@ const { Content, Footer } = Layout;
 
 type DashboardLayoutProps = {
   children: React.ReactNode;
-  session: any;
+  session: Sessions;
 };
 
 function DashboardLayout({ children, session }: DashboardLayoutProps) {
