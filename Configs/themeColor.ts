@@ -2,6 +2,7 @@
 export const themeColor = {
   primary: "#00a8ff",
   darkBlue: "#002140",
+  darkBlueSecondary: "#33539E",
   secondary: "#ff6347",
   success: "#4caf50",
   danger: "#f44336",

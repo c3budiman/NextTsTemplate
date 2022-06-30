@@ -28,7 +28,7 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 
   return getLayout(
     <>
-      <NextNProgress color={themeColor.success} />
+      <NextNProgress color={themeColor.darkBlueSecondary} />
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <QueryClientProvider client={queryClient}>

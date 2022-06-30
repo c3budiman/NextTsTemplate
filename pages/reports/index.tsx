@@ -11,7 +11,7 @@ function Reports(session: Sessions) {
 
   useEffect(() => {
     store.dispatch(changeSidebarKey(["reports"]));
-    store.dispatch(InsertBreadcrumb([{ name: "Reports", url: "/reports" }, { name: "Uwow", url: "#" }]));
+    store.dispatch(InsertBreadcrumb([{ name: "Reports", url: "/reports" }, { name: "Example crumb", url: "#" }]));
 
     return () => {
       store.dispatch(InsertBreadcrumb([]));

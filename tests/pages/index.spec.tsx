@@ -21,7 +21,7 @@ describe("Home", () => {
   });
 
   it("Renders a Header Without Session", () => {
-    const HeaderComp = render(<HeaderOur session={{ code: "-1" }} />);
+    const HeaderComp = render(<HeaderOur session={{ code: -1 }} />);
     const headerLoginCTA = HeaderComp.container.querySelector("#login-CTA")?.innerHTML;
     expect(headerLoginCTA).toBe("Sign In");
   });

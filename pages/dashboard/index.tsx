@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import Head from "next/head";
 import { handleSessions } from "../../Utils/Helpers/GetSession";
 import DashboardLayout from "../../Layouts/DashboardLayout";
-import { changeSidebarKey } from "../../Redux/layout/action";
+import { changeSidebarKey, InsertBreadcrumb } from "../../Redux/layout/action";
 import returnStoreAndPersistor from "../../Redux/store";
 import { Sessions } from "../../Types/Session";
 
@@ -11,9 +11,11 @@ function Dashboard(session: Sessions) {
 
   useEffect(() => {
     store.dispatch(changeSidebarKey(["dashboard"]));
+    store.dispatch(InsertBreadcrumb([{ name: "Dashboard", url: "/dashboard" }]));
+    return () => {
+      store.dispatch(InsertBreadcrumb([]));
+    };
   }, [store]);
-
-  console.log(session)
 
   return (
     <>

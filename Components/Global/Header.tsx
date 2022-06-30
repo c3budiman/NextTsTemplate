@@ -5,10 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { themeColor } from "../../Configs/themeColor";
+import { Sessions } from "../../Types/Session";
 import { isNotDashboard, ReplaceNavigateTo } from "../../Utils/Helpers/Routing";
 
 type HeaderProps = {
-  session: any;
+  session: Sessions;
 };
 
 function HeaderOur({ session }: HeaderProps) {
@@ -24,62 +25,60 @@ function HeaderOur({ session }: HeaderProps) {
       <Menu.Item>Signout</Menu.Item>
     </Menu>
   );
-  const logoTextStyle = { fontSize: "14px", fontWeight: "bold", color: themeColor.fontPrimary };
+  const logoTextStyle = { fontSize: "16px", fontWeight: "bold", color: themeColor.fontPrimary, marginTop: "4px" };
   const loginTextStyle = { fontSize: "14px", fontWeight: 600, color: themeColor.fontPrimary, cursor: "pointer" };
   return (
     <>
       {session?.code === 0 && (
-        <Header className="site-layout-background" style={{ padding: 0, background: themeColor.headerPrimary }}>
-          <Menu mode="horizontal">
-            <Row
-              style={{ width: "100%" }}
-              align="middle"
-              justify={isNotDashboard(router) ? "space-between" : "end"}
-            >
-              {isNotDashboard(router) && (
-                <Link href="/dashboard" passHref>
-                  <Row style={{ cursor: "pointer" }}>
-                    <div className="logo">
-                      <Image
-                        src="/Images/logo.jpg"
-                        alt="tesanjay"
-                        height="40px"
-                        width="40px"
-                      />
-                    </div>
-                    <p id="headerTittle" style={logoTextStyle}>CryptoBudiman</p>
-                  </Row>
-                </Link>
-              )}
-              <Dropdown overlay={menuDesktop}>
-                <Row align="middle">
-                  <Avatar
-                    className="mx-4 my-auto pointer"
-                    src="/Images/avatar.png"
-                  />
-                  <p
-                    id="headerPeopleName"
-                    style={{
-                      margin: "0px 10px",
-                      color: "#33539E",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    {session?.data?.name}
-                  </p>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    style={{ marginRight: "10px" }}
-                    src="/Icon/header/arrow-down-blue.svg"
-                    alt="dropdown"
-                  />
+        <Header className="site-layout-background" style={{ padding: 0, background: isNotDashboard(router) ? themeColor.headerPrimary : themeColor.light, height: "70px" }}>
+          <Row
+            style={{ width: "100%" }}
+            align="middle"
+            justify={isNotDashboard(router) ? "space-between" : "end"}
+          >
+            {isNotDashboard(router) && (
+              <Link href="/dashboard" passHref>
+                <Row style={{ cursor: "pointer" }}>
+                  <div className="logo">
+                    <Image
+                      src="/Images/logo.jpg"
+                      alt="logo"
+                      height="40px"
+                      width="40px"
+                    />
+                  </div>
+                  <p id="headerTittle" style={logoTextStyle}>{process.env.NEXT_PUBLIC_APPNAME ?? "Next TS Template"}</p>
                 </Row>
-              </Dropdown>
-            </Row>
-          </Menu>
+              </Link>
+            )}
+            <Dropdown overlay={menuDesktop}>
+              <Row style={{ marginTop: isNotDashboard(router) ? "-14px" : "0px" }} align="middle">
+                <Avatar
+                  className="mx-4 my-auto pointer"
+                  src="/Images/avatar.png"
+                />
+                <p
+                  id="headerPeopleName"
+                  style={{
+                    margin: "0px 10px",
+                    color: isNotDashboard(router) ? themeColor.white : themeColor.darkBlueSecondary,
+                    fontWeight: "bold",
+                  }}
+                >
+                  {session?.data?.name}
+                </p>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  style={{ marginRight: "10px" }}
+                  src="/Icon/header/arrow-down-blue.svg"
+                  alt="dropdown"
+                />
+              </Row>
+            </Dropdown>
+          </Row>
         </Header>
       )}
-      {session?.code === "-1" && (
+      {session?.code === -1 && (
         <Header className="site-layout-background" style={{ padding: 0, background: themeColor.headerPrimary }}>
           <Row align="middle" justify="space-between">
             <Col xs={12} sm={12} md={12} lg={12}>

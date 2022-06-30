@@ -34,5 +34,5 @@ export const handleSessions = async (
       },
     };
   }
-  return { props: { code: "-1" } };
+  return { props: { code: -1 } };
 };
