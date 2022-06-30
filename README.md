@@ -1,15 +1,20 @@
-## Getting it Started
+## How to use this template
 
-if you have npm, just use npm. but if you would like to move into pnpm. then install pnpm first. why pnpm? faster, and efficient disk!
+- first you need to fork this repo, 
+- create new repository in github, 
+- in "Repository template" selector choose this template (NextTSTemplate).
+- copy the .env.example to .env
+- fill in the .env
+- and run the script below
 
 ```bash
-#to install pnpm :
-#posix :
+#to install pnpm, if you haven`t already :
+#posix system (linux/mac) :
 curl -fsSL https://get.pnpm.io/install.sh | sh -
 #windows : 
 iwr https://get.pnpm.io/install.ps1 -useb | iex
 ```
-finally if u have pnpm then you can run this :
+
 ```bash
 $ pnpm install # install dependency
 $ pnpm run dev # start the project in dev environment
