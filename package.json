@@ -16,7 +16,7 @@
     "@types/jest": "^27.4.1",
     "@types/react-redux": "^7.1.23",
     "antd": "^4.20.1",
-    "apexcharts": "^3.18.0",
+    "apexcharts": "^3.35.3",
     "axios": "^0.26.1",
     "cross-env": "^7.0.3",
     "eslint-plugin-import": ">=2.25.3 <3.0.0",
