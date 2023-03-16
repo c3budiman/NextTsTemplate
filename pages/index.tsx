@@ -6,7 +6,7 @@ function Home(session: any) {
   return (
     <>
       <Head>
-        <title>Next TS Template</title>
+        <title>Next TS aduh</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <DashboardLayout session={session}>
