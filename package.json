@@ -15,7 +15,7 @@
     "@next/bundle-analyzer": "^12.1.6",
     "@types/jest": "^27.4.1",
     "@types/react-redux": "^7.1.23",
-    "antd": "^4.21.0",
+    "antd": "^4.24.8",
     "apexcharts": "^3.18.0",
     "axios": "^0.26.1",
     "cross-env": "^7.0.3",
