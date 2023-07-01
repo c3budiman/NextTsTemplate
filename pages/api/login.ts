@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { rejectNull, setSession } from "../../Utils/Helpers/HelperServer";
+import axios from "axios";
 
 export default async function handler(
   req: NextApiRequest,
@@ -11,12 +12,17 @@ export default async function handler(
   ) {
     const { username } = req.body;
     const { password } = req.body;
-    if (username === "admin" && password === "admin") {
+    const beUrl = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3000"
+    const {data, status} = await axios.post(beUrl+"/public/v1/login", {
+      username,
+      password
+    })
+    if (status === 200) {
       const HardCodedData = {
-        name: "c3budiman",
+        name: data?.user?.name,
         role: "admin",
         organization: "Google",
-        accessToken: Math.random(),
+        accessToken: data?.token,
       };
       const sessionResult = await setSession(
         req,

@@ -1,4 +1,4 @@
-import { BarChartOutlined, UserOutlined, HomeOutlined } from "@ant-design/icons";
+import { BarChartOutlined, UserOutlined, HomeOutlined, ContainerOutlined } from "@ant-design/icons";
 
 // eslint-disable-next-line import/prefer-default-export
 export const AdminRoutes = [
@@ -10,20 +10,20 @@ export const AdminRoutes = [
     children: [],
   },
   {
-    path: '/user',
-    key: "user",
-    name: "User",
-    icon: <UserOutlined />,
+    path: '/blog',
+    key: "blog",
+    name: "Blog",
+    icon: <ContainerOutlined />,
     children: [
       {
-        path: '/user/list',
-        key: "user/list",
-        name: "List",
+        path: '/blog/create',
+        key: "blog/create",
+        name: "Create",
       },
       {
-        path: '/user/create',
-        key: "user/create",
-        name: "Create",
+        path: '/blog',
+        key: "blog",
+        name: "List",
       },
     ],
   },

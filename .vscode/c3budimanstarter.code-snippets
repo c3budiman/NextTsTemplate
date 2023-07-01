@@ -69,7 +69,7 @@
 			"import Head from 'next/head';",
 			"",
 			"",
-			"const ${NewPage}${1} = (session: { session: any }) => {",
+			"const ${NewPage}${1} = (session: Sessions) => {",
 			"\tconst [loading, setLoading] = useState(false);",
 			"\t// plz use dynamic import from your editor for this one :",
 			"\tconst { isMobile } = useWindowSize();",
