@@ -41,7 +41,7 @@
     "redux": "^4.2",
     "redux-logger": "^3.0.6",
     "redux-persist": "^6.0.0",
-    "redux-persist-transform-encrypt": "^3.0.1",
+    "redux-persist-transform-encrypt": "^5.0.0",
     "redux-promise-middleware": "^6.1.2",
     "socket.io-client": "^4.5.0",
     "supercluster": ">=6",
